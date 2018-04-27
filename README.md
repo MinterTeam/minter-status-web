@@ -1,8 +1,15 @@
 # minter-status
 
-> Nuxt2 project
+[status.minter.network](https://status.minter.network)
 
-## Build Setup
+## Deployment script
+```
+npm ci && npm run production
+```
+Root folder: `./dist/`
+
+
+## Nuxt build info
 
 ``` bash
 # install dependencies
