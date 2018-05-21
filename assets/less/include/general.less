@@ -1,6 +1,26 @@
 @import "variables";
 
 
+/* https://google-webfonts-helper.herokuapp.com/fonts/ubuntu?subsets=latin,cyrillic */
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Ubuntu Regular'), local('Ubuntu-Regular'),
+    url('../fonts/ubuntu-v11-cyrillic_latin-regular.woff2') format('woff2'),
+    url('../fonts/ubuntu-v11-cyrillic_latin-regular.woff') format('woff');
+}
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Ubuntu Bold'), local('Ubuntu-Bold'),
+    url('../fonts/ubuntu-v11-cyrillic_latin-700.woff2') format('woff2'),
+    url('../fonts/ubuntu-v11-cyrillic_latin-700.woff') format('woff');
+}
+
+
+
 *, *::before, *::after {box-sizing: border-box;}
 html { height: 100%; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; -webkit-overflow-scrolling: touch;}
 body {
