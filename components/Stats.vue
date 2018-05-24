@@ -1,9 +1,25 @@
 <script>
+    import thousands from 'thousands';
+
     export default {
         props: {
             statsType: {
                 type: String,
                 required: true,
+            },
+            statsData: {
+                type: Object,
+                required: true,
+            },
+        },
+        computed: {
+            stats() {
+                return {
+                    ...this.statsData,
+                    latestBlockHeight: thousands(this.statsData.latestBlockHeight, '&thinsp;'),
+                    averageBlockTime: this.statsData.averageBlockTime.toFixed(1),
+                    transactionsPerSecond: this.statsData.transactionsPerSecond.toFixed(1),
+                }
             }
         }
     }
@@ -38,11 +54,11 @@
                     <div class="u-grid u-grid--vertical-margin">
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name">Number of blocks</div>
-                            <div class="index-stats__value index-stats__value--primary">170&thinsp;541</div>
+                            <div class="index-stats__value index-stats__value--primary" v-html="stats.latestBlockHeight"></div>
                         </div>
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name">Speed of blocks (24h)</div>
-                            <div class="index-stats__value index-stats__value--primary">14.1s</div>
+                            <div class="index-stats__value index-stats__value--primary">{{ stats.averageBlockTime }}s</div>
                         </div>
                     </div>
                 </div>
@@ -61,11 +77,11 @@
                     <div class="u-grid u-grid--vertical-margin">
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name"># of transactions (24h)</div>
-                            <div class="index-stats__value index-stats__value--primary">195.05 M</div>
+                            <div class="index-stats__value index-stats__value--primary">{{ stats.totalTransactions }}</div>
                         </div>
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name"># per second (24h)</div>
-                            <div class="index-stats__value index-stats__value--primary">8.7</div>
+                            <div class="index-stats__value index-stats__value--primary">{{ stats.transactionsPerSecond }}</div>
                         </div>
                     </div>
                 </div>

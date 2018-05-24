@@ -55,7 +55,7 @@
 @header-side-padding: ((@header-height - 30px) / 2);
 .header {box-shadow: 0 2px 5px rgba(0,0,0,0.1); background: #fff; width: 100%;}
 .header__container {display: flex; justify-content: space-between; align-items: center; height: 64px;}
-.header__menu {flex-grow: 2; display: flex; border-bottom: 1px solid @c-border;}
+.header__menu {display: flex; border-bottom: 1px solid @c-border;}
 .header__link {
     padding: @header-link-padding 0; position: relative; font-size: 16px; line-height: 24px; font-family: @heading-font-family; font-weight: 700; text-transform: uppercase; text-decoration: none; width: 50%; text-align: center; margin-bottom: -1px;
     &::after {content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: currentColor; opacity: 0; transition: 0.15s;}
@@ -67,7 +67,7 @@
 .header__logo-text {font-size: 26px; line-height: 32px;}
 
 @media (min-width: @breakpoint-small-up) {
-    .header__menu {border: none;}
+    .header__menu {border: none; flex-grow: 2;}
     .header__link {margin-bottom: 0;}
 }
 @media (min-width: @breakpoint-medium-up) {
