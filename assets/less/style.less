@@ -63,7 +63,7 @@
     &.is-active::after {opacity: 1; background: @c-main;}
 }
 .header__logo {display: flex; align-items: center; margin-right: 40px;}
-.header__logo-image {margin-right: 20px; margin-left: 2px;}
+.header__logo-image {margin-right: 20px; margin-left: 2px; font-size: 0;}
 .header__logo-text {font-size: 26px; line-height: 32px;}
 
 @media (min-width: @breakpoint-small-up) {
@@ -108,8 +108,8 @@
 .index-stats__value-text {margin-right: 8px;}
 .index-stats__sub-value {font-size: 15px; line-height: 1.4;}
 .index-stats__sub-value--dynamic {align-self: center; display: flex; align-items: center;}
-.index-stats__green {color: #afd693;}
-.index-stats__red {color: #c05858;}
+.index-stats__green {text-transform: capitalize; color: #afd693;}
+.index-stats__red {text-transform: capitalize; color: #c05858;}
 
 
 .history-cell {display: flex;}

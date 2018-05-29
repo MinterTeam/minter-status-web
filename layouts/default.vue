@@ -12,10 +12,10 @@
     <div class="main-wrap">
         <header class="header">
             <div class="header__container u-container">
-                <nuxt-link class="header__logo no-link" to="/">
+                <div class="header__logo no-link">
                     <img class="header__logo-image" src="/img/minter-logo-circle.svg" alt="Minter" width="36" height="36">
                     <div class="header__logo-text">Status</div>
-                </nuxt-link>
+                </div>
                 <HeaderMenu class="u-hidden-small-down"/>
             </div>
         </header>
