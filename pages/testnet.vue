@@ -1,7 +1,7 @@
 <script>
     import PageMixin from '~/components/PageMixin';
     import Stats from '~/components/Stats';
-    import {MAINNET} from "~/assets/variables";
+    import {TESTNET} from "~/assets/variables";
 
     export default {
         components: {
@@ -12,7 +12,7 @@
         ],
         data() {
             return {
-                network: MAINNET,
+                network: TESTNET,
             }
         }
     }
@@ -20,5 +20,5 @@
 
 <template>
     <Stats :stats="statsData" :network="testnet" v-if="statsData"/>
-    <h1 class="u-text-center" style="margin-top: 50px" v-else>Mainnet is not launched yet</h1>
+    <h1 class="u-text-center" style="margin-top: 50px" v-else>Testnet is not available</h1>
 </template>

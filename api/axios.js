@@ -1,8 +1,10 @@
 import axios from 'axios'
-import {CURRENT_URL} from "~/assets/variables";
+import {MAINNET_URL, TESTNET_URL} from "~/assets/variables";
 
-const instance = axios.create({
-    baseURL: `${CURRENT_URL}/api/v1/`,
+export let mainnet = axios.create({
+    baseURL: `${MAINNET_URL}/api/v1/`,
 });
 
-export default instance;
+export let testnet = axios.create({
+    baseURL: `${TESTNET_URL}/api/v1/`,
+});

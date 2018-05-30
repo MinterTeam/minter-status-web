@@ -1,4 +1,5 @@
 import thousands from 'thousands';
+import {MAINNET, TESTNET} from "~/assets/variables";
 
 export function thousandsFilter(value) {
     return decode(thousands(value, '&thinsp;'));
@@ -72,4 +73,8 @@ function reducePrecision(num) {
 export function round(value, power) {
     let tenPower = Math.pow(10, power);
     return Math.round(value * tenPower) / tenPower;
+}
+
+export function getNetworkType(route) {
+    return route.path === '/testnet' ? TESTNET : MAINNET;
 }
