@@ -66,5 +66,5 @@ export function round(value, power) {
 }
 
 export function getNetworkType(route) {
-    return route.path === '/testnet' ? TESTNET : MAINNET;
+    return route.path.indexOf('/testnet') === 0 ? TESTNET : MAINNET;
 }
