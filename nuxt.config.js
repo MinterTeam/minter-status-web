@@ -1,7 +1,3 @@
-const dotenv = require('dotenv');
-const fs = require('fs');
-
-
 const BASE_TITLE = require('./assets/variables').BASE_TITLE;
 const BASE_DESCRIPTION = '';
 
@@ -37,7 +33,6 @@ module.exports = {
         middleware: [
         ],
     },
-    env: dotenv.parse(fs.readFileSync('.env')),
     /*
     ** Build configuration
     */

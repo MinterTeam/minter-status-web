@@ -1,19 +1,9 @@
 import thousands from 'thousands';
+import decode from 'entity-decode';
 import {MAINNET, TESTNET} from "~/assets/variables";
 
 export function thousandsFilter(value) {
     return decode(thousands(value, '&thinsp;'));
-}
-
-/**
- * @TODO separate module
- * from vue/src/compiler/parser/entity-decoder
- */
-let decoder;
-function decode(html) {
-    decoder = decoder || document.createElement('div');
-    decoder.innerHTML = html;
-    return decoder.textContent;
 }
 
 

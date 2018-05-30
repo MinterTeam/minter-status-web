@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "entity-decode": "^1.0.0",
     "gulp-multi-process": "^1.3.1",
     "nuxt-edge": "^2.0.0-25459710.0d0d83c",
     "thousands": "^1.0.1"
@@ -27,7 +28,6 @@
     "beeper": "^1.1.1",
     "cross-env": "^5.1.6",
     "del": "^3.0.0",
-    "dotenv": "^5.0.1",
     "eslint": "^4.19.1",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^2.0.0",

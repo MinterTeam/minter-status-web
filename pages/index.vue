@@ -19,6 +19,6 @@
 </script>
 
 <template>
-    <Stats :stats="statsData" :network="testnet" v-if="statsData"/>
+    <Stats :stats="statsData" :network="network" v-if="statsData"/>
     <h1 class="u-text-center" style="margin-top: 50px" v-else>Mainnet is not launched yet</h1>
 </template>
