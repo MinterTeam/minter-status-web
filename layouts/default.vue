@@ -27,7 +27,7 @@
 
         <footer class="footer">
             <div class="footer__container u-container u-container--large">
-                <img class="footer__logo" src="/img/minter-logo-white.svg" alt="Minter">
+                <img class="footer__logo" src="/img/minter-logo-white.svg" alt="Minter" width="190" height="59">
                 <div class="footer__menu">
                     <div class="footer__menu-item">
                         <a class="footer__link link--hover" href="https://beta.minter.network#intro" target="_blank">Intro</a>

@@ -6,17 +6,25 @@
 
     export default {
         asyncData ({ route }) {
+            if (process.server) {
+                return;
+            }
             return getStatus(getNetworkType(route))
                 .then((statsData) => ({statsData}))
                 .catch((e) => {})
         },
         data() {
             return {
+                isStatsLoading: true,
                 statsData: null,
             }
         },
         created() {
-            this.handleData();
+            if (this.statsData) {
+                this.handleData();
+            } else {
+                this.updateData();
+            }
         },
         destroyed() {
             clearTimeout(timer);
@@ -31,6 +39,7 @@
                     .catch(this.handleData);
             },
             handleData() {
+                this.isStatsLoading = false;
                 timer = setTimeout(this.updateData, 5000);
             },
         }

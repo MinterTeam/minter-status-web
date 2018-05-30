@@ -10,6 +10,16 @@
         mixins: [
             PageMixin,
         ],
+        head() {
+            const title = 'Minter Testnet Status';
+
+            return {
+                title: title,
+                meta: [
+                    { hid: 'og-title', name: 'og:title', content: title },
+                ],
+            }
+        },
         data() {
             return {
                 network: TESTNET,
@@ -20,5 +30,5 @@
 
 <template>
     <Stats :stats="statsData" :network="network" v-if="statsData"/>
-    <h1 class="u-text-center" style="margin-top: 50px" v-else>Testnet is not available</h1>
+    <h1 class="u-text-center" style="margin-top: 50px" v-else-if="!isStatsLoading">Testnet is not available</h1>
 </template>

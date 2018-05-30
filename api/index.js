@@ -4,5 +4,8 @@ import {MAINNET} from "~/assets/variables";
 export function getStatus(type) {
     const axios = type === MAINNET ? mainnet : testnet;
     return axios.get('status_page')
-        .then((response) => response.data.data);
+        .then((response) => ({
+            ...response.data.data,
+            uptime: response.data.data.uptime * 100, // fraction to percent
+        }));
 }

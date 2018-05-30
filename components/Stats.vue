@@ -38,7 +38,7 @@
                     </div>
                     <div class="u-cell u-cell--1-2">
                         <div class="index-stats__name">Uptime</div>
-                        <div class="index-stats__value index-stats__value--primary">{{ stats.uptime }}%</div>
+                        <div class="index-stats__value index-stats__value--primary">{{ stats.uptime | number }}%</div>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                     <div class="u-grid u-grid--vertical-margin">
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name"># of transactions (24h)</div>
-                            <div class="index-stats__value index-stats__value--primary">{{ stats.txTotalCount }}</div>
+                            <div class="index-stats__value index-stats__value--primary">{{ stats.txTotalCount | thousands }}</div>
                         </div>
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name"># per second (24h)</div>
@@ -124,14 +124,14 @@
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name">Average per transaction (24h)</div>
                             <div class="index-stats__value index-stats__value--primary">
-                                <span class="index-stats__value-text">{{ stats.averageTxCommission }}</span>
+                                <span class="index-stats__value-text">{{ stats.averageTxCommission | number }}</span>
                                 <span class="index-stats__sub-value">{{ coinName }}</span>
                             </div>
                         </div>
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name">Total commission</div>
                             <div class="index-stats__value index-stats__value--primary">
-                                <span class="index-stats__value-text">{{ stats.totalCommission }}</span>
+                                <span class="index-stats__value-text">{{ stats.totalCommission | thousands }}</span>
                                 <span class="index-stats__sub-value">{{ coinName }}</span>
                             </div>
                         </div>
