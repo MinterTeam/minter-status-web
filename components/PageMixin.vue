@@ -11,7 +11,7 @@
             }
             return getStatus(getNetworkType(route))
                 .then((statsData) => ({statsData}))
-                .catch((e) => {})
+                .catch((e) => {});
         },
         data() {
             return {
