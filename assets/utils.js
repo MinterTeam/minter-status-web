@@ -15,12 +15,15 @@ export function thousandsFilter(value) {
 export function roundMoney(num, precision = 3) {
     let data = String(num).split(/[eE]/);
     if (data.length === 1) {
+        // no E
         return reducePrecision(num).toString();
     }
 
     let zeros = '';
     let sign = num < 0 ? '-' : '';
+    // digits before E
     let digits = data[0].replace('.', '');
+    // power
     let mag = Number(data[1]) + 1;
 
     if (mag < 0) {
@@ -28,7 +31,7 @@ export function roundMoney(num, precision = 3) {
         while (mag++) {
             zeros += '0';
         }
-        return zeros + digits.replace(/^\-/,'').substr(0, precision);
+        return zeros + digits.replace(/^\-/,'').substr(0, precision).replace(/0+$/, '');
     } else {
         mag -= digits.length;
         while (mag--) {

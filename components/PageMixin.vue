@@ -10,17 +10,20 @@
                 return;
             }
             return getStatus(getNetworkType(route))
-                .then((statsData) => ({statsData}))
+                .then((statsData) => ({
+                    statsData,
+                    isDataLoading: false,
+                }))
                 .catch((e) => {});
         },
         data() {
             return {
-                isStatsLoading: true,
+                isDataLoading: true,
                 statsData: null,
             }
         },
         created() {
-            if (this.statsData) {
+            if (this.isDataLoading) {
                 this.handleData();
             } else {
                 this.updateData();
@@ -39,7 +42,7 @@
                     .catch(this.handleData);
             },
             handleData() {
-                this.isStatsLoading = false;
+                this.isDataLoading = false;
                 timer = setTimeout(this.updateData, 5000);
             },
         }

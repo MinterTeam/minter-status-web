@@ -5,7 +5,7 @@
     export default {
         filters: {
             thousands: thousandsFilter,
-            number: (value) => roundMoney(value),
+            number: roundMoney,
         },
         props: {
             network: {
