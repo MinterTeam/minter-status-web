@@ -22,11 +22,11 @@
                 statsData: null,
             }
         },
-        created() {
+        beforeMount() {
             if (this.isDataLoading) {
-                this.handleData();
-            } else {
                 this.updateData();
+            } else {
+                this.handleData();
             }
         },
         destroyed() {
