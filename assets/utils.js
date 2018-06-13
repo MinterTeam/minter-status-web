@@ -59,6 +59,7 @@ function reducePrecision(num) {
 
 
 /**
+ * Round to power
  * @param {number} value
  * @param {number} power
  * @return {number}
@@ -66,6 +67,22 @@ function reducePrecision(num) {
 export function round(value, power) {
     let tenPower = Math.pow(10, power);
     return Math.round(value * tenPower) / tenPower;
+}
+
+/**
+ * Round up to min value (10^-power)
+ * @param {number} value
+ * @param {number} power
+ * @return {number}
+ */
+export function roundUp(value, power = 8) {
+    if (value === 0) {
+        return value;
+    }
+    const sign = value > 0 ? 1 : -1;
+    const minValue = Math.pow(10, -power);
+    return Math.max(minValue, Math.abs(value)) * sign;
+
 }
 
 export function getNetworkType(route) {

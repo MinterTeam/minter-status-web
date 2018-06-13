@@ -1,11 +1,12 @@
 <script>
     import {MAINNET, MAINNET_COIN_NAME, TESTNET_COIN_NAME} from "~/assets/variables";
-    import {thousandsFilter, roundMoney} from "~/assets/utils";
+    import {thousandsFilter, roundMoney, roundUp} from "~/assets/utils";
 
     export default {
         filters: {
             thousands: thousandsFilter,
             number: roundMoney,
+            roundUp,
         },
         props: {
             network: {
@@ -124,14 +125,14 @@
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name">Average per transaction (24h)</div>
                             <div class="index-stats__value index-stats__value--primary">
-                                <span class="index-stats__value-text">{{ stats.averageTxCommission | number }}</span>
+                                <span class="index-stats__value-text">{{ stats.averageTxCommission | roundUp | number }}</span>
                                 <span class="index-stats__sub-value">{{ coinName }}</span>
                             </div>
                         </div>
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name">Total commission</div>
                             <div class="index-stats__value index-stats__value--primary">
-                                <span class="index-stats__value-text">{{ stats.totalCommission | number | thousands }}</span>
+                                <span class="index-stats__value-text">{{ stats.totalCommission | roundUp | number | thousands }}</span>
                                 <span class="index-stats__sub-value">{{ coinName }}</span>
                             </div>
                         </div>
