@@ -71,15 +71,15 @@ export function round(value, power) {
 
 /**
  * Round up to min value (10^-power)
- * @param {number} value
+ * @param {number|string} value
  * @param {number} power
  * @return {number}
  */
 export function roundUp(value, power = 8) {
-    if (value === 0) {
-        return value;
+    if (parseFloat(value) === 0) {
+        return 0;
     }
-    const sign = value > 0 ? 1 : -1;
+    const sign = value >= 0 ? 1 : -1;
     const minValue = Math.pow(10, -power);
     return Math.max(minValue, Math.abs(value)) * sign;
 
