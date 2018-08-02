@@ -1,15 +1,17 @@
-# minter-status
+# Minter Status Website
 
-[status.minter.network](https://status.minter.network)
+This repository contain the code for the official Minter Status website [status.minter.network](https://status.minter.network)
 
 ## Deployment script
+
+Build in Nuxt Generate mode
 ```
 npm ci && npm run production
 ```
 Root folder: `./dist/`
 
 
-## Nuxt build info
+## Nuxt build cheatsheet
 
 ``` bash
 # install dependencies
