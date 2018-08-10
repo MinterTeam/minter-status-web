@@ -33,7 +33,7 @@
                 <div class="u-grid u-grid--vertical-margin">
                     <div class="u-cell u-cell--1-2">
                         <div class="index-stats__name">Status</div>
-                        <div class="index-stats__value index-stats__value--primary" :class="stats.status === 'active' ? 'index-stats__green' : 'index-stats__red'">
+                        <div class="index-stats__value index-stats__value--primary" :class=" stats.status === 'updating' ? 'index-stats__yellow' : stats.status === 'active' ? 'index-stats__green' : 'index-stats__red'">
                             {{ stats.status }}
                         </div>
                     </div>
