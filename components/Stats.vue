@@ -33,7 +33,7 @@
                 <div class="u-grid u-grid--vertical-margin">
                     <div class="u-cell u-cell--1-2">
                         <div class="index-stats__name">Status</div>
-                        <div class="index-stats__value index-stats__value--primary" :class="stats.status === 'active' ? 'index-stats__green' : 'index-stats__red'">
+                        <div class="index-stats__value index-stats__value--primary" :class=" stats.status === 'updating' ? 'index-stats__yellow' : stats.status === 'active' ? 'index-stats__green' : 'index-stats__red'">
                             {{ stats.status }}
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                     <div class="u-grid u-grid--vertical-margin">
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name"># of transactions (24h)</div>
-                            <div class="index-stats__value index-stats__value--primary">{{ stats.txTotalCount | thousands }}</div>
+                            <div class="index-stats__value index-stats__value--primary">{{ stats.tx24hCount | thousands }}</div>
                         </div>
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name"># per second (24h)</div>
@@ -130,7 +130,7 @@
                             </div>
                         </div>
                         <div class="u-cell u-cell--1-2">
-                            <div class="index-stats__name">Total commission</div>
+                            <div class="index-stats__name">Total commission (24h)</div>
                             <div class="index-stats__value index-stats__value--primary">
                                 <span class="index-stats__value-text">{{ stats.totalCommission | roundUp | number | thousands }}</span>
                                 <span class="index-stats__sub-value">{{ coinName }}</span>
