@@ -1,10 +1,10 @@
 import axios from 'axios'
-import {MAINNET_URL, TESTNET_URL} from "~/assets/variables";
+import {EXPLORER_MAINNET_URL, EXPLORER_TESTNET_URL} from "~/assets/variables";
 
 export let mainnet = axios.create({
-    baseURL: `${MAINNET_URL}/api/v1/`,
+    baseURL: `${EXPLORER_MAINNET_URL}/api/v1/`,
 });
 
 export let testnet = axios.create({
-    baseURL: `${TESTNET_URL}/api/v1/`,
+    baseURL: `${EXPLORER_TESTNET_URL}/api/v1/`,
 });
