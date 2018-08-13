@@ -130,7 +130,7 @@
                             </div>
                         </div>
                         <div class="u-cell u-cell--1-2">
-                            <div class="index-stats__name">Total commission</div>
+                            <div class="index-stats__name">Total commission (24h)</div>
                             <div class="index-stats__value index-stats__value--primary">
                                 <span class="index-stats__value-text">{{ stats.totalCommission | roundUp | number | thousands }}</span>
                                 <span class="index-stats__sub-value">{{ coinName }}</span>
