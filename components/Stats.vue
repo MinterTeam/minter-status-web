@@ -79,7 +79,7 @@
                     <div class="u-grid u-grid--vertical-margin">
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name"># of transactions (24h)</div>
-                            <div class="index-stats__value index-stats__value--primary">{{ stats.txTotalCount | thousands }}</div>
+                            <div class="index-stats__value index-stats__value--primary">{{ stats.tx24hCount | thousands }}</div>
                         </div>
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name"># per second (24h)</div>
