@@ -1,4 +1,5 @@
 export const BASE_TITLE = 'Minter Status';
+export const BASE_DESCRIPTION = '';
 export const MAINNET = 'mainnet';
 export const TESTNET = 'testnet';
 export const MAINNET_COIN_NAME = 'BIP';
