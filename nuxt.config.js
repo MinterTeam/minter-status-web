@@ -1,5 +1,17 @@
-import {BASE_TITLE} from "./assets/variables";
-const BASE_DESCRIPTION = '';
+const path = require('path');
+const fs = require('fs');
+const dotenv = require('dotenv');
+
+const dotEnvConfig = dotenv.config();
+const dotEnv = dotEnvConfig.error ? {} : dotEnvConfig.parsed;
+const dotEnvExample = dotenv.parse(fs.readFileSync(path.resolve(process.cwd(), '.env.example')));
+const processEnv = {};
+// copy process.env values by .env.example keys
+Object.keys(dotEnvExample).forEach((key) => {
+    processEnv[key] = process.env[key];
+});
+
+import {BASE_TITLE, BASE_DESCRIPTION} from "./assets/variables";
 
 module.exports = {
     /*
@@ -38,6 +50,7 @@ module.exports = {
         { src: '~/plugins/seo-gtag.js', ssr: false },
         { src: '~/plugins/seo-ym.js', ssr: false },
     ],
+    env: Object.assign({}, processEnv, dotEnv),
     /*
     ** Build configuration
     */
