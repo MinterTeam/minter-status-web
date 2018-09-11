@@ -7,7 +7,7 @@
   "scripts": {
     "prod": "npm run production",
     "production": "npm run generate",
-    "dev": "gulp & nuxt --spa",
+    "dev": "gulp & nuxt --spa --port=3010",
     "build": "gulp once && nuxt build --spa",
     "start": "nuxt start",
     "generate": "gulp once && nuxt generate",
@@ -17,8 +17,10 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "centrifuge": "^1.5.0",
     "entity-decode": "^1.0.1",
     "nuxt-edge": "^2.0.0-25568071.0dff1b8",
+    "sockjs-client": "^1.1.5",
     "thousands": "^1.0.1"
   },
   "devDependencies": {
