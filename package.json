@@ -7,7 +7,7 @@
   "scripts": {
     "prod": "npm run production",
     "production": "npm run generate",
-    "dev": "gulp & nuxt --spa --port=3010",
+    "dev": "gulp & nuxt --spa",
     "build": "gulp once && nuxt build --spa",
     "start": "nuxt start",
     "generate": "gulp once && nuxt generate",
