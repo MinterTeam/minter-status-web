@@ -6,8 +6,8 @@
         footerLinkList: footerLinksData,
         components: {
             HeaderMenu,
-        }
-    }
+        },
+    };
 </script>
 
 <template>

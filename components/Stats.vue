@@ -23,7 +23,7 @@
                 return this.network === MAINNET ? MAINNET_COIN_NAME : TESTNET_COIN_NAME;
             },
         },
-    }
+    };
 </script>
 
 <template>

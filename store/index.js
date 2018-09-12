@@ -1,10 +1,10 @@
-import Vuex from 'vuex'
+import Vuex from 'vuex';
 
 //import actions from './actions'
-import mutations from './mutations'
+import mutations from './mutations';
 //import getters from './getters'
 
-export default function createStore () {
+export default function createStore() {
     return new Vuex.Store({
         state: {
             history: [],
@@ -12,5 +12,5 @@ export default function createStore () {
         //actions,
         mutations,
         //getters,
-    })
+    });
 }

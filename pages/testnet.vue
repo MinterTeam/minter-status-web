@@ -18,17 +18,17 @@
                 meta: [
                     { hid: 'og-title', name: 'og:title', content: title },
                 ],
-            }
+            };
         },
         data() {
             return {
                 network: TESTNET,
-            }
-        }
-    }
+            };
+        },
+    };
 </script>
 
 <template>
     <Stats :stats="statsData" :network="network" v-if="statsData"/>
-    <h1 class="u-text-center" style="margin-top: 50px" v-else-if="!isDataLoading">Testnet Explorer is not available</h1>
+    <h1 class="u-text-center" style="margin-top: 50px" v-else>Testnet Explorer is not available</h1>
 </template>

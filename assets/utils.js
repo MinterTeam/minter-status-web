@@ -31,7 +31,7 @@ export function roundMoney(num, precision = 3) {
         while (mag++) {
             zeros += '0';
         }
-        return zeros + digits.replace(/^\-/,'').substr(0, precision).replace(/0+$/, '');
+        return zeros + digits.replace(/^-/, '').substr(0, precision).replace(/0+$/, '');
     } else {
         mag -= digits.length;
         while (mag--) {
@@ -47,7 +47,7 @@ export function roundMoney(num, precision = 3) {
  */
 function reducePrecision(num) {
     if (Math.abs(num) < Math.pow(0.1, 8)) {
-        return num
+        return num;
     } else if (Math.abs(num) < Math.pow(0.1, 5)) {
         return round(num, 8);
     } else if (Math.abs(num) < Math.pow(0.1, 3)) {

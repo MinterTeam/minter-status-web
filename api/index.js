@@ -1,9 +1,9 @@
-import {mainnet, testnet} from '~/api/axios';
+import {mainnetExplorer, testnetExplorer} from '~/api/explorer';
 import {MAINNET} from "~/assets/variables";
 
 export function getStatus(type) {
-    const axios = type === MAINNET ? mainnet : testnet;
-    return axios.get('status-page')
+    const explorer = type === MAINNET ? mainnetExplorer : testnetExplorer;
+    return explorer.get('status-page')
         .then((response) => ({
             ...response.data.data,
             uptime: response.data.data.uptime * 100, // fraction to percent
@@ -11,8 +11,8 @@ export function getStatus(type) {
 }
 
 export function getWebSocketConnectData(type) {
-    const axios = type === MAINNET ? mainnet : testnet;
-    return axios.get('settings/get-ws-data').then((response) => ({
-        ...response.data.data
+    const explorer = type === MAINNET ? mainnetExplorer : testnetExplorer;
+    return explorer.get('settings/get-ws-data').then((response) => ({
+        ...response.data.data,
     }));
 }

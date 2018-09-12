@@ -163,7 +163,7 @@ dd {overflow-wrap: break-word; margin: 0;}
 .form-field {display: block; position: relative; cursor: pointer; font-weight: 700; padding-top: @field-padding; pointer-events: none;}
 .form-field__input {
     padding: @field-input-padding 0 8px; font-size: 16px; line-height: 22px; color: inherit; background: transparent; border: none; border-bottom: 1px solid @c-black-light; transition: 0.2s; display: block; width: 100%; pointer-events: auto; border-radius: 0;
-    &:focus {border-color: @c-main;}
+    &:focus {border-color: @c-main; outline: none;}
     .is-error > & {border-color: @c-red;}
 }
 .form-field__label {
