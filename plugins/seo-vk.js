@@ -25,4 +25,4 @@ export default function({ app }) {
             window.VK.Retargeting.Hit();
         }
     });
-};
+}

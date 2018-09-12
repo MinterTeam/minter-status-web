@@ -15,20 +15,34 @@
             return getStatus(getNetworkType(route))
                 .then((statsData) => ({
                     statsData,
+                    isDataLoading: false,
                 }))
                 .catch((e) => {});
         },
         data() {
             return {
+                isDataLoading: true,
                 statsData: null,
             };
         },
         beforeMount() {
+            if (this.isDataLoading) {
+                getStatus(getNetworkType(this.$route))
+                    .then((statsData) => {
+                        this.statsData = statsData;
+                        this.isDataLoading = false;
+                    })
+                    .catch((e) => {
+                        this.isDataLoading = false;
+                    });
+            }
             getWebSocketConnectData(getNetworkType(this.$route))
                 .then((data) => this.subscribeWS(data));
         },
         destroyed() {
-            centrifuge.disconnect();
+            if (centrifuge) {
+                centrifuge.disconnect();
+            }
         },
         methods: {
             subscribeWS(connectData) {

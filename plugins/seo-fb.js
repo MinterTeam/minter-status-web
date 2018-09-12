@@ -40,4 +40,4 @@ export default function({ app }) {
     app.router.afterEach((to, from) => {
         fbq('track', 'PageView');
     });
-};
+}

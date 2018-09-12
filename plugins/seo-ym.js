@@ -34,4 +34,4 @@ export default function({ app }) {
             window.yaCounter49878307.hit(to.fullPath);
         }
     });
-};
+}

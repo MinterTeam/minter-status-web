@@ -33,4 +33,4 @@ export default function({ app }) {
         */
         gtag('config', GA_ID, {'page_path': to.fullPath});
     });
-};
+}
