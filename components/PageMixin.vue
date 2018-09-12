@@ -1,11 +1,16 @@
 <script>
-    import {getStatus} from "~/api";
+    import {getStatus, getWebSocketConnectData} from "~/api";
     import {getNetworkType} from "~/assets/utils";
+    import SockJS from "sockjs-client";
+    import Centrifuge from 'centrifuge';
+    import {EXPLORER_RTM_URL} from "~/assets/variables";
 
     let timer = null;
 
+    window.SockJS = SockJS;
+
     export default {
-        asyncData ({ route }) {
+        asyncData({route}) {
             if (process.server) {
                 return;
             }
@@ -14,7 +19,8 @@
                     statsData,
                     isDataLoading: false,
                 }))
-                .catch((e) => {});
+                .catch((e) => {
+                });
         },
         data() {
             return {
@@ -25,9 +31,9 @@
         beforeMount() {
             if (this.isDataLoading) {
                 this.updateData();
-            } else {
-                this.handleData();
             }
+            getWebSocketConnectData(getNetworkType(this.$route))
+                .then((data) => this.subscribeWS(data));
         },
         destroyed() {
             clearTimeout(timer);
@@ -45,6 +51,26 @@
                 this.isDataLoading = false;
                 timer = setTimeout(this.updateData, 5000);
             },
+
+            subscribeWS(connectData) {
+                let centrifuge = new Centrifuge({
+                    url: EXPLORER_RTM_URL,
+                    user: connectData.user ? connectData.user : '',
+                    timestamp: connectData.timestamp.toString(),
+                    token: connectData.token,
+                });
+
+                let callbacks = {
+                    message: data => this.statsData = data.data,
+                    join: message => {},
+                    leave: message => console.log(message),
+                    subscribe: context => {},
+                    error: errContext => console.log(errContext),
+                    unsubscribe: context => console.log(context),
+                };
+                centrifuge.subscribe("status_page", callbacks);
+                centrifuge.connect();
+            }
         }
     }
 </script>
