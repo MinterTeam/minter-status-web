@@ -105,8 +105,8 @@
                             <div class="index-stats__value index-stats__value--primary">{{ stats.activeValidators }}</div>
                         </div>
                         <div class="u-cell u-cell--1-2">
-                            <div class="index-stats__name">Total # of validators</div>
-                            <div class="index-stats__value index-stats__value--primary">{{ stats.totalValidatorsCount }}</div>
+                            <div class="index-stats__name">Active candidates</div>
+                            <div class="index-stats__value index-stats__value--primary">{{ stats.activeCandidates }}</div>
                         </div>
                     </div>
                 </div>
