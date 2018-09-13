@@ -12,7 +12,6 @@ export function getStatus(type) {
 
 export function getWebSocketConnectData(type) {
     const explorer = type === MAINNET ? mainnetExplorer : testnetExplorer;
-    return explorer.get('settings/get-ws-data').then((response) => ({
-        ...response.data.data,
-    }));
+    return explorer.get('settings/get-ws-data')
+        .then((response) => response.data.data);
 }

@@ -1,8 +1,8 @@
 <script>
-    import {getStatus, getWebSocketConnectData} from "~/api";
-    import {getNetworkType} from "~/assets/utils";
     import SockJS from "sockjs-client";
     import Centrifuge from 'centrifuge';
+    import {getStatus, getWebSocketConnectData} from "~/api";
+    import {getNetworkType} from "~/assets/utils";
     import {EXPLORER_RTM_URL} from "~/assets/variables";
 
     let centrifuge;
