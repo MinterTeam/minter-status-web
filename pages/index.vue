@@ -10,6 +10,16 @@
         mixins: [
             PageMixin,
         ],
+        head() {
+            const description = 'Get the status of the Minter network (block time, TPS, TX fees, etc.)';
+
+            return {
+                meta: [
+                    { hid: 'description', name: 'description', content: description },
+                    { hid: 'og-description', name: 'og:description', content: description },
+                ],
+            };
+        },
         data() {
             return {
                 network: MAINNET,

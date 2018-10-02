@@ -1,4 +1,5 @@
-export const BASE_TITLE = 'Minter Status';
+export const BASE_TITLE_END = ' — Minter';
+export const BASE_TITLE = 'Status' + BASE_TITLE_END;
 export const BASE_DESCRIPTION = '';
 export const MAINNET = 'mainnet';
 export const TESTNET = 'testnet';

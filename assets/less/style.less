@@ -58,7 +58,7 @@
 .header__menu {display: flex; border-bottom: 1px solid @c-border;}
 .header__link {
     padding: @header-link-padding 0; position: relative; font-size: 16px; line-height: 24px; font-family: @heading-font-family; font-weight: 700; text-transform: uppercase; text-decoration: none; width: 50%; text-align: center; margin-bottom: -1px;
-    &::after {content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: currentColor; opacity: 0; transition: 0.15s;}
+    &::after {content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: currentColor; opacity: 0; transition: 0.15s;}
     &:hover::after, &:focus::after {opacity: 0.4;}
     &.is-active::after {opacity: 1; background: @c-main;}
 }

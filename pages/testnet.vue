@@ -1,7 +1,7 @@
 <script>
     import PageMixin from '~/components/PageMixin';
     import Stats from '~/components/Stats';
-    import {TESTNET} from "~/assets/variables";
+    import {TESTNET, BASE_TITLE} from "~/assets/variables";
 
     export default {
         components: {
@@ -11,12 +11,15 @@
             PageMixin,
         ],
         head() {
-            const title = 'Minter Testnet Status';
+            const title = 'Testnet ' + BASE_TITLE;
+            const description = 'Get the status of the Minter test network (block time, TPS, TX fees, etc.)';
 
             return {
                 title: title,
                 meta: [
                     { hid: 'og-title', name: 'og:title', content: title },
+                    { hid: 'description', name: 'description', content: description },
+                    { hid: 'og-description', name: 'og:description', content: description },
                 ],
             };
         },
