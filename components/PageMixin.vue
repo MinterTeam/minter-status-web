@@ -1,12 +1,11 @@
 <script>
-    import SockJS from "sockjs-client";
+    // import SockJS from "sockjs-client";
     import Centrifuge from 'centrifuge';
     import {getStatus, getWebSocketConnectData} from "~/api";
     import {getNetworkType} from "~/assets/utils";
-    import {EXPLORER_RTM_URL, NETWORK_EXPLORER_CHANNEL} from "~/assets/variables";
+    import {EXPLORER_RTM_URL, MAINNET, TESTNET, NETWORK_MAINNET_CHANNEL, NETWORK_TESTNET_CHANNEL} from "~/assets/variables";
 
     let centrifuge;
-    const NETWORK_WS_PREFIX = NETWORK_EXPLORER_CHANNEL ? NETWORK_EXPLORER_CHANNEL + '_' : '';
 
     export default {
         asyncData({route}) {
@@ -26,6 +25,12 @@
                 statsData: null,
             };
         },
+        computed: {
+            wsChannelPrefix() {
+                const channel = this.network === MAINNET ? NETWORK_MAINNET_CHANNEL : NETWORK_TESTNET_CHANNEL;
+                return channel ? channel + '_' : '';
+            },
+        },
         beforeMount() {
             if (this.isDataLoading) {
                 getStatus(getNetworkType(this.$route))
@@ -43,20 +48,7 @@
         },
         destroyed() {
             if (centrifuge) {
-                // console.log(centrifuge._transport)
-                // console.log(centrifuge._transport.close)
-                // console.log(centrifuge._transport.websocket.close)
-                // centrifuge._transport.onclose = (e) => console.log(e)
-
-                try {
-                    centrifuge.disconnect();
-                } catch (e) {
-                    console.log(e);
-                    // fix centrifuge incorrect closing
-                    if (!centrifuge._transport.close && !centrifuge._transportClosed) {
-                        centrifuge._transport.websocket.close();
-                    }
-                }
+                centrifuge.disconnect();
             }
         },
         methods: {
@@ -67,17 +59,18 @@
                     // token: connectData.token,
                     // sockjs: SockJS,
                 });
-                window.cent = centrifuge;
 
-                let callbacks = {
-                    message: (data) => this.statsData = data.data,
-                    join: (message) => {},
-                    leave: (message) => console.log(message),
-                    subscribe: (context) => {},
-                    error: (errContext) => console.log(errContext),
-                    unsubscribe: (context) => console.log(context),
-                };
-                centrifuge.subscribe(NETWORK_WS_PREFIX + "status_page", callbacks);
+                // let callbacks = {
+                //     message: (data) => this.statsData = data.data,
+                //     join: (message) => {},
+                //     leave: (message) => console.log(message),
+                //     subscribe: (context) => {},
+                //     error: (errContext) => console.log(errContext),
+                //     unsubscribe: (context) => console.log(context),
+                // };
+                centrifuge.subscribe(this.wsChannelPrefix + "status_page", (statusData) => {
+                    this.statsData = statusData.data;
+                });
                 centrifuge.connect();
             },
         },

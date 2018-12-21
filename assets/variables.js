@@ -4,7 +4,7 @@ export const BASE_DESCRIPTION = '';
 export const MAINNET = 'mainnet';
 export const TESTNET = 'testnet';
 export const NETWORK_MAINNET_CHANNEL = 'mainnet';
-export const NETWORK_EXPLORER_CHANNEL = process.env.APP_ENV === 'production' ? NETWORK_MAINNET_CHANNEL : '';
+export const NETWORK_TESTNET_CHANNEL = '';
 export const MAINNET_COIN_NAME = 'BIP';
 export const TESTNET_COIN_NAME = 'MNT';
 export const EXPLORER_MAINNET_URL = process.env.APP_EXPLORER_MAINNET_URL || 'https://explorer.minter.network';
