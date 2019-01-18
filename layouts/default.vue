@@ -7,6 +7,11 @@
         components: {
             HeaderMenu,
         },
+        computed: {
+            locale() {
+                return 'en';
+            },
+        },
     };
 </script>
 
@@ -32,7 +37,7 @@
                 <img class="footer__logo" src="/img/minter-logo-white.svg" alt="Minter" width="190" height="59">
                 <div class="footer__menu">
                     <div class="footer__menu-item" v-for="link in $options.footerLinkList" :key="link.slug">
-                        <a class="footer__link link--hover" :href="link.url" target="_blank" rel="nofollow noopener">{{ link.title }}</a>
+                        <a class="footer__link link--hover" :href="link.url" target="_blank" rel="nofollow noopener">{{ link.title[locale] }}</a>
                     </div>
                 </div>
             </div>
