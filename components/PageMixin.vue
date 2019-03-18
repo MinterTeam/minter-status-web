@@ -1,7 +1,7 @@
 <script>
     // import SockJS from "sockjs-client";
     import Centrifuge from 'centrifuge';
-    import {getStatus, getWebSocketConnectData} from "~/api";
+    import {getStatus} from "~/api";
     import {getNetworkType} from "~/assets/utils";
     import {EXPLORER_RTM_URL, MAINNET, TESTNET, NETWORK_MAINNET_CHANNEL, NETWORK_TESTNET_CHANNEL} from "~/assets/variables";
 
@@ -68,6 +68,7 @@
                 //     error: (errContext) => console.log(errContext),
                 //     unsubscribe: (context) => console.log(context),
                 // };
+                //@TODO subscribe to blocks, status_page ws does not work
                 centrifuge.subscribe(this.wsChannelPrefix + "status_page", (statusData) => {
                     this.statsData = statusData.data;
                 });

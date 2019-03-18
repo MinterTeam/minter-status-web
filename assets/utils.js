@@ -1,62 +1,36 @@
-import thousands from 'thousands';
 import decode from 'entity-decode';
+import prettyNum from 'pretty-num';
 import {MAINNET, TESTNET} from "~/assets/variables";
 
-export function thousandsFilter(value) {
-    return decode(thousands(value, '&thinsp;'));
-}
-
 
 /**
- * @param {number} num
- * @param {number} [precision=3]
+ * @param {string|number} value
  * @return {string}
  */
-export function roundMoney(num, precision = 3) {
-    let data = String(num).split(/[eE]/);
-    if (data.length === 1) {
-        // no E
-        return reducePrecision(num).toString();
-    }
-
-    let zeros = '';
-    let sign = num < 0 ? '-' : '';
-    // digits before E
-    let digits = data[0].replace('.', '');
-    // power
-    let mag = Number(data[1]) + 1;
-
-    if (mag < 0) {
-        zeros = sign + '0.';
-        while (mag++) {
-            zeros += '0';
-        }
-        return zeros + digits.replace(/^-/, '').substr(0, precision).replace(/0+$/, '');
+export function pretty(value) {
+    if (value > 0.001 || value < -0.001 || Number(value) === 0) {
+        return decode(prettyNum(value, {precision: 4, rounding: 'fixed', thousandsSeparator: '&#x202F;'}));
     } else {
-        mag -= digits.length;
-        while (mag--) {
-            zeros += '0';
-        }
-        return digits + zeros;
+        return decode(prettyNum(value, {precision: 2, rounding: 'significant', thousandsSeparator: '&#x202F;'}));
     }
+}
+
+export function prettyUsd(value) {
+    return decode(prettyNum(value, {precision: 2, thousandsSeparator: '&#x202F;'}));
+}
+
+export function prettyRound(value) {
+    return decode(prettyNum(value, {precision: 0, thousandsSeparator: '&#x202F;'}));
 }
 
 /**
- * @param {number} num
- * @return {number}
+ * Ensure value to have minimum 4 decimal digits
+ * @param {string|number} value
+ * @return {string}
  */
-function reducePrecision(num) {
-    if (Math.abs(num) < Math.pow(0.1, 8)) {
-        return num;
-    } else if (Math.abs(num) < Math.pow(0.1, 5)) {
-        return round(num, 8);
-    } else if (Math.abs(num) < Math.pow(0.1, 3)) {
-        return round(num, 6);
-    } else {
-        return round(num, 4);
-    }
+export function prettyExact(value) {
+    return decode(prettyNum(value, {precision: 4, rounding: 'increase', thousandsSeparator: '&#x202F;'}));
 }
-
 
 /**
  * Round to power
@@ -75,7 +49,7 @@ export function round(value, power) {
  * @param {number} power
  * @return {number}
  */
-export function roundUp(value, power = 8) {
+export function roundUp(value, power = 4) {
     if (parseFloat(value) === 0) {
         return 0;
     }

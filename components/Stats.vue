@@ -1,12 +1,14 @@
 <script>
     import {MAINNET, MAINNET_COIN_NAME, TESTNET_COIN_NAME} from "~/assets/variables";
-    import {thousandsFilter, roundMoney, roundUp} from "~/assets/utils";
+    import {pretty, prettyRound, prettyUsd, roundUp} from "~/assets/utils";
 
     export default {
         filters: {
-            thousands: thousandsFilter,
-            number: roundMoney,
+            pretty,
+            prettyRound,
+            prettyUsd,
             roundUp,
+            roundUp2: (value) => roundUp(value, 2),
         },
         props: {
             network: {
@@ -39,7 +41,7 @@
                     </div>
                     <div class="u-cell u-cell--1-2">
                         <div class="index-stats__name">Uptime</div>
-                        <div class="index-stats__value index-stats__value--primary">{{ stats.uptime | number }}%</div>
+                        <div class="index-stats__value index-stats__value--primary">{{ stats.uptime | prettyUsd }}%</div>
                     </div>
                 </div>
             </div>
@@ -57,11 +59,11 @@
                     <div class="u-grid u-grid--vertical-margin">
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name">Number of blocks</div>
-                            <div class="index-stats__value index-stats__value--primary">{{ stats.numberOfBlocks | thousands }}</div>
+                            <div class="index-stats__value index-stats__value--primary">{{ stats.numberOfBlocks | prettyRound }}</div>
                         </div>
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name">Speed of blocks (24h)</div>
-                            <div class="index-stats__value index-stats__value--primary">{{ stats.blockSpeed24h | number }}s</div>
+                            <div class="index-stats__value index-stats__value--primary">{{ stats.blockSpeed24h | prettyUsd }}s</div>
                         </div>
                     </div>
                 </div>
@@ -79,11 +81,11 @@
                     <div class="u-grid u-grid--vertical-margin">
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name"># of transactions (24h)</div>
-                            <div class="index-stats__value index-stats__value--primary">{{ stats.tx24hCount | thousands }}</div>
+                            <div class="index-stats__value index-stats__value--primary">{{ stats.tx24hCount | prettyRound }}</div>
                         </div>
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name"># per second (24h)</div>
-                            <div class="index-stats__value index-stats__value--primary">{{ stats.txPerSecond | number }}</div>
+                            <div class="index-stats__value index-stats__value--primary">{{ stats.txPerSecond | roundUp2 | prettyUsd }}</div>
                         </div>
                     </div>
                 </div>
@@ -125,14 +127,14 @@
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name">Average per transaction (24h)</div>
                             <div class="index-stats__value index-stats__value--primary">
-                                <span class="index-stats__value-text">{{ stats.averageTxCommission | roundUp | number }}</span>
+                                <span class="index-stats__value-text">{{ stats.averageTxCommission | roundUp | pretty }}</span>
                                 <span class="index-stats__sub-value">{{ coinName }}</span>
                             </div>
                         </div>
                         <div class="u-cell u-cell--1-2">
                             <div class="index-stats__name">Total commission (24h)</div>
                             <div class="index-stats__value index-stats__value--primary">
-                                <span class="index-stats__value-text">{{ stats.totalCommission | roundUp | number | thousands }}</span>
+                                <span class="index-stats__value-text">{{ stats.totalCommission | roundUp | pretty }}</span>
                                 <span class="index-stats__sub-value">{{ coinName }}</span>
                             </div>
                         </div>
