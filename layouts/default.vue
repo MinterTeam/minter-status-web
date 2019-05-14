@@ -1,16 +1,13 @@
 <script>
-    import footerLinksData from 'minter-footer-links';
     import HeaderMenu from '~/components/HeaderMenu';
+    import Footer from '~/layouts/_footer.vue';
 
     export default {
-        footerLinkList: footerLinksData,
         components: {
             HeaderMenu,
+            Footer,
         },
         computed: {
-            locale() {
-                return 'en';
-            },
         },
     };
 </script>
@@ -32,16 +29,7 @@
             <nuxt/>
         </main>
 
-        <footer class="footer">
-            <div class="footer__container u-container u-container--large">
-                <img class="footer__logo" src="/img/minter-logo-white.svg" alt="Minter" width="190" height="59">
-                <div class="footer__menu">
-                    <div class="footer__menu-item" v-for="link in $options.footerLinkList" :key="link.slug">
-                        <a class="footer__link link--hover" :href="link.url" target="_blank" rel="nofollow noopener">{{ link.title[locale] }}</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <Footer/>
     </div>
 </template>
 

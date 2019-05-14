@@ -13,9 +13,9 @@
     </target>
     <target name="validate.variables" description="Проверяем все ли переменные определены">
         <fail unless="env.app_env" message="app_env environment variable is not set"/>
-        <fail unless="env.app_explorer_mainnet_url" message="app_explorer_mainnet_url environment variable is not set"/>
+        <fail unless="env.app_explorer_mainnet_host" message="app_explorer_mainnet_host environment variable is not set"/>
         <fail unless="env.app_explorer_mainnet_api_url" message="app_explorer_mainnet_url environment variable is not set"/>
-        <fail unless="env.app_explorer_testnet_url" message="app_explorer_testnet_url environment variable is not set"/>
+        <fail unless="env.app_explorer_testnet_host" message="app_explorer_testnet_host environment variable is not set"/>
         <fail unless="env.app_explorer_testnet_api_url" message="app_explorer_testnet_url environment variable is not set"/>
         <fail unless="env.app_explorer_rtm_url" message="app_explorer_rtm_url environment variable is not set"/>
     </target>

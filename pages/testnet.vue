@@ -25,13 +25,15 @@
         },
         data() {
             return {
-                network: TESTNET,
             };
+        },
+        beforeCreate() {
+            this.$store.commit('SET_NETWORK', TESTNET);
         },
     };
 </script>
 
 <template>
-    <Stats :stats="statsData" :network="network" v-if="statsData"/>
-    <h1 class="u-text-center" style="margin-top: 50px" v-else-if="!isDataLoading">Testnet Explorer is not available</h1>
+    <Stats :stats="statsData" :network="$store.state.network" v-if="statsData"/>
+    <h1 class="u-text-center" style="margin-top: 50px" v-else-if="!isDataLoading">Testnet status is not available</h1>
 </template>

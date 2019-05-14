@@ -7,6 +7,7 @@ import mutations from './mutations';
 export default function createStore() {
     return new Vuex.Store({
         state: {
+            network: '',
             history: [],
         },
         //actions,

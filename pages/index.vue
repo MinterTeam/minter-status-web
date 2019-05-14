@@ -22,13 +22,15 @@
         },
         data() {
             return {
-                network: MAINNET,
             };
+        },
+        beforeCreate() {
+            this.$store.commit('SET_NETWORK', MAINNET);
         },
     };
 </script>
 
 <template>
-    <Stats :stats="statsData" :network="network" v-if="statsData"/>
-    <h1 class="u-text-center" style="margin-top: 50px" v-else-if="!isDataLoading">Mainnet is not launched yet</h1>
+    <Stats :stats="statsData" :network="$store.state.network" v-if="statsData"/>
+    <h1 class="u-text-center" style="margin-top: 50px" v-else-if="!isDataLoading">Mainnet status is not available</h1>
 </template>

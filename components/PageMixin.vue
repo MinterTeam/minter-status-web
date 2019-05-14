@@ -3,7 +3,7 @@
     import Centrifuge from 'centrifuge';
     import {getStatus} from "~/api";
     import {getNetworkType} from "~/assets/utils";
-    import {EXPLORER_RTM_URL, MAINNET, TESTNET, NETWORK_MAINNET_CHANNEL, NETWORK_TESTNET_CHANNEL} from "~/assets/variables";
+    import {EXPLORER_MAINNET_RTM_URL, EXPLORER_TESTNET_RTM_URL, MAINNET, TESTNET} from "~/assets/variables";
 
     let centrifuge;
 
@@ -26,14 +26,10 @@
             };
         },
         computed: {
-            wsChannelPrefix() {
-                const channel = this.network === MAINNET ? NETWORK_MAINNET_CHANNEL : NETWORK_TESTNET_CHANNEL;
-                return channel ? channel + '_' : '';
-            },
         },
         beforeMount() {
             if (this.isDataLoading) {
-                getStatus(getNetworkType(this.$route))
+                getStatus(this.$store.state.network)
                     .then((statsData) => {
                         this.statsData = statsData;
                         this.isDataLoading = false;
@@ -53,7 +49,7 @@
         },
         methods: {
             subscribeWS(connectData) {
-                centrifuge = new Centrifuge(EXPLORER_RTM_URL, {
+                centrifuge = new Centrifuge(this.$store.state.network === MAINNET ? EXPLORER_MAINNET_RTM_URL : EXPLORER_TESTNET_RTM_URL, {
                     // user: connectData.user ? connectData.user : '',
                     // timestamp: connectData.timestamp.toString(),
                     // token: connectData.token,
@@ -69,7 +65,7 @@
                 //     unsubscribe: (context) => console.log(context),
                 // };
                 //@TODO subscribe to blocks, status_page ws does not work
-                centrifuge.subscribe(this.wsChannelPrefix + "status_page", (statusData) => {
+                centrifuge.subscribe("status_page", (statusData) => {
                     this.statsData = statusData.data;
                 });
                 centrifuge.connect();
