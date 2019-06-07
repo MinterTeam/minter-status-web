@@ -30,23 +30,94 @@
 
 <template>
     <div class="u-grid u-grid--vertical-margin">
-        <section class="u-cell u-cell--medium--1-2">
-            <div class="index-stats panel panel__section">
+        <section class="u-cell">
+            <div class="index-stats panel">
                 <div class="u-grid u-grid--vertical-margin">
-                    <div class="u-cell u-cell--1-2">
-                        <div class="index-stats__name">Status</div>
-                        <div class="index-stats__value index-stats__value--primary" :class=" stats.status === 'updating' ? 'index-stats__yellow' : stats.status === 'active' ? 'index-stats__green' : 'index-stats__red'">
-                            {{ stats.status }}
+                    <div class="u-cell u-cell--medium--1-2">
+                        <div class="panel__section">
+                            <div class="u-grid u-grid--vertical-margin">
+                                <div class="u-cell u-cell--1-2">
+                                    <div class="index-stats__name">Status</div>
+                                    <div class="index-stats__value index-stats__value--primary" :class=" stats.status === 'updating' ? 'index-stats__yellow' : stats.status === 'active' ? 'index-stats__green' : 'index-stats__red'">
+                                        {{ stats.status }}
+                                    </div>
+                                </div>
+                                <div class="u-cell u-cell--1-2">
+                                    <div class="index-stats__name">Uptime</div>
+                                    <div class="index-stats__value index-stats__value--primary">{{ stats.uptime | prettyUsd }}%</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="u-cell u-cell--1-2">
-                        <div class="index-stats__name">Uptime</div>
-                        <div class="index-stats__value index-stats__value--primary">{{ stats.uptime | prettyUsd }}%</div>
+                    <div class="u-cell u-cell--medium--1-2">
+                        <div class="panel__section">
+                            <div class="index-stats__name">Total emission</div>
+                            <div class="index-stats__value index-stats__value--primary">
+                                <span class="index-stats__value-text">{{ stats.bipEmission | prettyRound }}</span>
+                                <span class="index-stats__sub-value">{{ coinName }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </section>
+        <section class="u-cell">
+            <div class="panel">
+                <div class="panel__section panel__header">
+                    <h2 class="panel__header-title panel__title">
+                        <img class="panel__header-title-icon" src="/img/icon-coin.svg" width="40" height="40" alt="" role="presentation">
+                        Coins
+                    </h2>
+                </div>
+                <div class="panel__section panel__section--wide">
+                    <div class="u-grid u-grid--vertical-margin">
+                        <div class="u-cell u-cell--medium--1-2">
+                            <div class="panel__section">
+                                <div class="u-grid u-grid--vertical-margin">
+                                    <div class="u-cell u-cell--1-2">
+                                        <div class="index-stats__name">Free float</div>
+                                        <div class="index-stats__value index-stats__value--primary">
+                                            <span class="index-stats__value-text">{{ stats.freeFloatBip | prettyRound }}</span>
+                                            <span class="index-stats__sub-value">{{ coinName }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="u-cell u-cell--1-2">
+                                        <div class="index-stats__name">Total delegated</div>
+                                        <div class="index-stats__value index-stats__value--primary">
+                                            <span class="index-stats__value-text">{{ stats.totalDelegatedBip | prettyRound }}</span>
+                                            <span class="index-stats__sub-value">{{ coinName }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-cell u-cell--medium--1-2">
+                            <div class="panel__section">
+                                <div class="u-grid u-grid--vertical-margin">
+                                    <div class="u-cell u-cell--1-2">
+                                        <div class="index-stats__name">Custom coins created</div>
+                                        <div class="index-stats__value index-stats__value--primary">{{ stats.customCoinsCount | prettyRound }}</div>
+                                    </div>
+                                    <div class="u-cell u-cell--1-2">
+                                        <div class="index-stats__name">Custom coins cap</div>
+                                        <div class="index-stats__value index-stats__value--primary">
+
+                                            <div class="index-stats__value index-stats__value--primary">
+                                                <span class="index-stats__value-text">{{ stats.customCoinsSum | prettyRound }}</span>
+                                                <span class="index-stats__sub-value">{{ coinName }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <div class="u-cell u-cell--medium--1-2 u-hidden-medium-down"></div>
         <section class="u-cell u-cell--medium--1-2">
             <div class="panel">
                 <div class="panel__section panel__header">
@@ -80,11 +151,11 @@
                 <div class="panel__section">
                     <div class="u-grid u-grid--vertical-margin">
                         <div class="u-cell u-cell--1-2">
-                            <div class="index-stats__name"># of transactions (24h)</div>
+                            <div class="index-stats__name">24h transactions</div>
                             <div class="index-stats__value index-stats__value--primary">{{ stats.tx24hCount | prettyRound }}</div>
                         </div>
                         <div class="u-cell u-cell--1-2">
-                            <div class="index-stats__name"># per second (24h)</div>
+                            <div class="index-stats__name">Tx per second (24h)</div>
                             <div class="index-stats__value index-stats__value--primary">{{ stats.txPerSecond | roundUp2 | prettyUsd }}</div>
                         </div>
                     </div>
@@ -132,7 +203,7 @@
                             </div>
                         </div>
                         <div class="u-cell u-cell--1-2">
-                            <div class="index-stats__name">Total commission (24h)</div>
+                            <div class="index-stats__name">24h commission</div>
                             <div class="index-stats__value index-stats__value--primary">
                                 <span class="index-stats__value-text">{{ stats.totalCommission | roundUp | pretty }}</span>
                                 <span class="index-stats__sub-value">{{ coinName }}</span>

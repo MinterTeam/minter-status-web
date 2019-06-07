@@ -18,6 +18,7 @@
     padding: 20px;
     &+& {border-top: 1px solid @c-border;}
 }
+.panel__section--wide {padding: 0;}
 .panel__title {font: inherit; font-weight: 700; text-transform: uppercase; margin: 0;}
 .panel__header {padding: 18px; display: flex; justify-content: space-between; align-items: center;}
 .panel__header-title {display: flex; align-items: center;}
@@ -98,7 +99,7 @@
 
 
 
-.index-stats {background: #4c4c4c; color: #fff;}
+.index-stats {background: #4c4c4c; color: #fff; overflow: hidden; /* fix firefox background */}
 .index-stats__section {
     &+& {border-top: 1px solid #3c3c3c;}
 }
