@@ -1,14 +1,9 @@
-import {mainnetExplorer, testnetExplorer} from '~/api/explorer';
+import {mainnetStatus, testnetStatus} from '~/api/status';
 import {MAINNET} from "~/assets/variables";
 
 export function getStatus(type) {
-    const explorer = type === MAINNET ? mainnetExplorer : testnetExplorer;
-    return explorer.get('status-page')
+    const explorer = type === MAINNET ? mainnetStatus : testnetStatus;
+    return explorer.get('status')
         .then((response) => response.data.data);
 }
 
-export function getWebSocketConnectData(type) {
-    const explorer = type === MAINNET ? mainnetExplorer : testnetExplorer;
-    return explorer.get('settings/get-ws-data')
-        .then((response) => response.data.data);
-}

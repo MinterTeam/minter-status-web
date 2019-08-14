@@ -65,8 +65,11 @@
                 //     unsubscribe: (context) => console.log(context),
                 // };
                 //@TODO subscribe to blocks, status_page ws does not work
-                centrifuge.subscribe("status_page", (statusData) => {
-                    this.statsData = statusData.data;
+                centrifuge.subscribe("status_page", (response) => {
+                    this.statsData = {
+                        ...this.statsData,
+                        ...response.data,
+                    };
                 });
                 centrifuge.connect();
             },

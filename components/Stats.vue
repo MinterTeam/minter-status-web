@@ -32,30 +32,47 @@
     <div class="u-grid u-grid--vertical-margin">
         <section class="u-cell">
             <div class="index-stats panel">
-                <div class="u-grid u-grid--vertical-margin">
+                <div class="u-grid">
                     <div class="u-cell u-cell--medium--1-2">
                         <div class="panel__section">
                             <div class="u-grid u-grid--vertical-margin">
-                                <div class="u-cell u-cell--1-2">
-                                    <div class="index-stats__name">Status</div>
-                                    <div class="index-stats__value index-stats__value--primary" :class=" stats.status === 'updating' ? 'index-stats__yellow' : stats.status === 'active' ? 'index-stats__green' : 'index-stats__red'">
-                                        {{ stats.status }}
+                                <div class="u-cell u-cell--1-3">
+                                    <div class="index-stats__name">Network</div>
+                                    <div class="index-stats__value index-stats__value--primary" :class="stats.networkStatus === 'active' ? 'index-stats__green' : 'index-stats__red'">
+                                        {{ stats.networkStatus }}
                                     </div>
                                 </div>
-                                <div class="u-cell u-cell--1-2">
-                                    <div class="index-stats__name">Uptime</div>
-                                    <div class="index-stats__value index-stats__value--primary">{{ stats.uptime | prettyUsd }}%</div>
+                                <div class="u-cell u-cell--1-3">
+                                    <div class="index-stats__name">Explorer</div>
+                                    <div class="index-stats__value index-stats__value--primary" :class="stats.explorerStatus === 'updating' ? 'index-stats__yellow' : stats.explorerStatus === 'active' ? 'index-stats__green' : 'index-stats__red'">
+                                        {{ stats.explorerStatus }}
+                                    </div>
+                                </div>
+                                <div class="u-cell u-cell--1-3">
+                                    <div class="index-stats__name">Gate</div>
+                                    <div class="index-stats__value index-stats__value--primary" :class="stats.gateStatus === 'active' ? 'index-stats__green' : 'index-stats__red'">
+                                        {{ stats.gateStatus }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="u-cell u-cell--medium--1-2">
                         <div class="panel__section">
-                            <div class="index-stats__name">Total Emission</div>
-                            <div class="index-stats__value index-stats__value--primary">
-                                <span class="index-stats__value-text">{{ stats.bipEmission | prettyRound }}</span>
-                                <span class="index-stats__sub-value">{{ coinName }}</span>
+                            <div class="u-grid u-grid--vertical-margin">
+                                <div class="u-cell u-cell--1-2">
+                                    <div class="index-stats__name">Uptime</div>
+                                    <div class="index-stats__value index-stats__value--primary">{{ stats.uptime | prettyUsd }}%</div>
+                                </div>
+                                <div class="u-cell u-cell--1-2">
+                                    <div class="index-stats__name">Total Emission</div>
+                                    <div class="index-stats__value index-stats__value--primary">
+                                        <span class="index-stats__value-text">{{ stats.bipEmission | prettyRound }}</span>
+                                        <span class="index-stats__sub-value">{{ coinName }}</span>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -73,7 +90,7 @@
                     </h2>
                 </div>
                 <div class="panel__section panel__section--wide">
-                    <div class="u-grid u-grid--vertical-margin">
+                    <div class="u-grid">
                         <div class="u-cell u-cell--medium--1-2">
                             <div class="panel__section">
                                 <div class="u-grid u-grid--vertical-margin">

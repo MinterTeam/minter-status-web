@@ -1,17 +1,24 @@
 import decode from 'entity-decode';
-import prettyNum from 'pretty-num';
+import prettyNum, {PRECISION_SETTING} from 'pretty-num';
 import {MAINNET, TESTNET} from "~/assets/variables";
 
 
 /**
  * @param {string|number} value
+ * @param {ROUNDING_MODE} [roundingMode]
  * @return {string}
  */
-export function pretty(value) {
-    if (value > 0.001 || value < -0.001 || Number(value) === 0) {
-        return decode(prettyNum(value, {precision: 4, rounding: 'fixed', thousandsSeparator: '&#x202F;'}));
+export function pretty(value, roundingMode) {
+    const PRECISION = 2;
+    if (value >= 1 || value <= -1 || Number(value) === 0) {
+        return decode(prettyNum(value, {precision: PRECISION, precisionSetting: PRECISION_SETTING.FIXED, roundingMode, thousandsSeparator: '&#x202F;'}));
     } else {
-        return decode(prettyNum(value, {precision: 2, rounding: 'significant', thousandsSeparator: '&#x202F;'}));
+        value = decode(prettyNum(value, {precision: PRECISION, precisionSetting: PRECISION_SETTING.REDUCE_SIGNIFICANT, roundingMode, thousandsSeparator: '&#x202F;'}));
+        value = value.substr(0, 10);
+        if (value === '0.00000000') {
+            return '0.00';
+        }
+        return value;
     }
 }
 
@@ -29,7 +36,7 @@ export function prettyRound(value) {
  * @return {string}
  */
 export function prettyExact(value) {
-    return decode(prettyNum(value, {precision: 4, rounding: 'increase', thousandsSeparator: '&#x202F;'}));
+    return decode(prettyNum(value, {precision: 4, precisionSetting: PRECISION_SETTING.INCREASE, thousandsSeparator: '&#x202F;'}));
 }
 
 /**
