@@ -48,29 +48,43 @@ module.exports = {
     plugins: [
         { src: '~/plugins/click-blur.js', ssr: false },
         { src: '~/plugins/seo-gtag.js', ssr: false },
-        { src: '~/plugins/seo-ym.js', ssr: false },
-        { src: '~/plugins/seo-fb.js', ssr: false },
-        { src: '~/plugins/seo-vk.js', ssr: false },
-        { src: '~/plugins/seo-tw.js', ssr: false },
+        // { src: '~/plugins/seo-ym.js', ssr: false },
+        // { src: '~/plugins/seo-fb.js', ssr: false },
+        // { src: '~/plugins/seo-vk.js', ssr: false },
+        // { src: '~/plugins/seo-tw.js', ssr: false },
     ],
     env: Object.assign({}, processEnv, dotEnv),
+    modern: 'client',
     /*
     ** Build configuration
     */
     build: {
         extractCSS: true,
-        /*
-        ** Run ESLint on save
-        */
-        // extend(config, { isDev, isClient }) {
-        //     if (isDev && isClient) {
-        //         config.module.rules.push({
-        //             enforce: 'pre',
-        //             test: /\.(js|vue)$/,
-        //             loader: 'eslint-loader',
-        //             exclude: /(node_modules)/,
-        //         });
-        //     }
-        // },
+        extend(config, { isDev, isClient, isServer }) {
+            config.resolve.mainFields =  ['module', 'browser', 'main'];
+        },
+        transpile: [
+            /es6-promise|\.(?!(?:js|json)$).{1,5}$/i,
+            '/base-x/',
+            '@material/',
+            'date-fns/esm',
+            'lodash-es',
+            'centrifuge/src',
+            'autonumeric/src',
+            'vue-autonumeric/src',
+            'nuxt-i18n/src',
+            'qr-scanner',
+            'v-autosize/src',
+            'v-file-input/src',
+            'vue-inline-svg/src/',
+            'clipbrd/src',
+            'pretty-num/src',
+            'from-exponential/src',
+            'minterjs-util',
+            'minterjs-tx',
+            'minterjs-wallet',
+            'minter-js-sdk',
+            'minter-js-org',
+        ],
     },
 };

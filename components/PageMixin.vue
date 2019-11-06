@@ -1,6 +1,5 @@
 <script>
-    // import SockJS from "sockjs-client";
-    import Centrifuge from 'centrifuge';
+    import Centrifuge from 'centrifuge/src';
     import {getStatus} from "~/api";
     import {getNetworkType} from "~/assets/utils";
     import {EXPLORER_MAINNET_RTM_URL, EXPLORER_TESTNET_RTM_URL, MAINNET, TESTNET} from "~/assets/variables";
