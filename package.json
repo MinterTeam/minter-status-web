@@ -21,7 +21,7 @@
     "axios": "^0.19.0",
     "centrifuge": "^2.2.3",
     "entity-decode": "^2.0.2",
-    "nuxt": "^2.10.2",
+    "nuxt": "^2.15.8",
     "pretty-num": "^0.3.0"
   },
   "devDependencies": {
