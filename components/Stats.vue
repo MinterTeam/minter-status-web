@@ -36,24 +36,24 @@
                     <div class="u-cell u-cell--medium--1-2">
                         <div class="panel__section">
                             <div class="u-grid u-grid--vertical-margin">
-                                <div class="u-cell u-cell--1-3">
+                                <div class="u-cell u-cell--1-2">
                                     <div class="index-stats__name">Network</div>
                                     <div class="index-stats__value index-stats__value--primary" :class="stats.networkStatus === 'active' ? 'index-stats__green' : 'index-stats__red'">
                                         {{ stats.networkStatus }}
                                     </div>
                                 </div>
-                                <div class="u-cell u-cell--1-3">
+                                <div class="u-cell u-cell--1-2">
                                     <div class="index-stats__name">Explorer</div>
                                     <div class="index-stats__value index-stats__value--primary" :class="stats.explorerStatus === 'updating' ? 'index-stats__yellow' : stats.explorerStatus === 'active' ? 'index-stats__green' : 'index-stats__red'">
                                         {{ stats.explorerStatus }}
                                     </div>
                                 </div>
-                                <div class="u-cell u-cell--1-3">
+                                <!--<div class="u-cell u-cell&#45;&#45;1-3">
                                     <div class="index-stats__name">Gate</div>
-                                    <div class="index-stats__value index-stats__value--primary" :class="stats.gateStatus === 'active' ? 'index-stats__green' : 'index-stats__red'">
+                                    <div class="index-stats__value index-stats__value&#45;&#45;primary" :class="stats.gateStatus === 'active' ? 'index-stats__green' : 'index-stats__red'">
                                         {{ stats.gateStatus }}
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                     </div>
